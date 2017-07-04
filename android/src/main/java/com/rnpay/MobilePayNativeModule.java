@@ -20,12 +20,10 @@ import com.facebook.react.bridge.ReactMethod;
 
 public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     public static final String NAME = "MobilePayNativeModule";
-    private Context                 mContext;
     private ReactApplicationContext reactContext;
 
     public MobilePayNativeModule(ReactApplicationContext reactContext) {
         super(reactContext);
-        this.mContext = reactContext;
         this.reactContext = reactContext;
     }
 
