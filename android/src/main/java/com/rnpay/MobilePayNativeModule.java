@@ -47,7 +47,7 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
         Thread payThread = new Thread(payRunnable);
         payThread.start();
     }
-
+    @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
