@@ -7,8 +7,6 @@ import com.alipay.sdk.app.AuthTask;
 import com.alipay.sdk.app.PayTask;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.RCTNativeAppEventEmitter;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.annotation.SuppressLint;
 import android.widget.Toast;
@@ -18,7 +16,6 @@ import com.facebook.react.bridge.Arguments;
 import android.app.Activity;
 import com.facebook.react.bridge.ReactMethod;
 public class MobilePayNativeModule extends ReactContextBaseJavaModule {
-    private static final int    ALI_PAY_FLAG = 0x10;
     public static final  String NAME         = "MobilePayNativeModule";
     private Context mContext;
     private  ReactApplicationContext reactContext;
@@ -31,46 +28,24 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     @ReactMethod
     @SuppressWarnings("unused")
     public void startAlipay(final String orderInfo) {
-        Runnable payRunnable = new Runnable() {
-            @Override
-            public void run() {
-                PayTask alipay = new PayTask((Activity)mContext);
-                Map<String, String> payResult = alipay.payV2(orderInfo, true);
-                Log.i("dale", payResult.toString());
-                String version = alipay.getVersion();
-                Log.i("dale", "支付task version-->" + version);
-                Message msg = new Message();
-                msg.what = ALI_PAY_FLAG;
-                msg.obj = payResult;
-                mHandler.sendMessage(msg);
-            }
-        };
-        Thread payThread = new Thread(payRunnable);
-        payThread.start();
+        PayTask alipay = new PayTask((Activity)mContext);
+        Map<String, String> payResult = alipay.payV2(orderInfo, true);
+        Log.i("dale", payResult.toString());
+        String version = alipay.getVersion();
+        Log.i("dale", "支付task version-->" + version);
+        PayResult backResult = new PayResult(payResult);
+        /**
+         对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+         */
+        String resultInfo = backResult.getResult();// 同步返回需要验证的信息
+        String resultStatus = backResult.getResultStatus();
+        // 判断resultStatus 为9000则代表支付成功
+        WritableMap params = Arguments.createMap();
+        params.putString("resultStatus", resultStatus);
+        params.putString("resultInfo", resultInfo);
+        params.putString("payType", "alipay");//支付类型
+        sendEvent(params);
     }
-    @SuppressLint("HandlerLeak")
-    private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-            case ALI_PAY_FLAG:
-                PayResult payResult = new PayResult((Map<String, String>) msg.obj);
-                /**
-                 对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
-                 */
-                String resultInfo = payResult.getResult();// 同步返回需要验证的信息
-                String resultStatus = payResult.getResultStatus();
-                // 判断resultStatus 为9000则代表支付成功
-                WritableMap params = Arguments.createMap();
-                params.putString("resultStatus", resultStatus);
-                params.putString("resultInfo", resultInfo);
-                params.putString("payType", "alipay");//支付类型
-                sendEvent(params);
-                break;
-            default:
-                break;
-            }
-        }
-    };
 
     @Override
     public String getName() {
