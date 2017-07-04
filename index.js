@@ -1,7 +1,7 @@
 import {
     NativeModules
 } from 'react-native';
-const MobilePay = NativeModules.MobilePayNatvieModule;
+const MobilePay = NativeModules.MobilePayNativeModule;
 /**
  * 移动rn支付入口
  */

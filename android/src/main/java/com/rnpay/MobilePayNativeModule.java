@@ -13,12 +13,12 @@ import android.text.TextUtils;
 import android.annotation.SuppressLint;
 import android.widget.Toast;
 
-public class MobilePayNatvieModule extends ReactContextBaseJavaModule {
+public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     private static final int    ALI_PAY_FLAG = 0x10;
-    public static final  String NAME         = "MobilePayNatvieModule";
+    public static final  String NAME         = "MobilePayNativeModule";
     private ReactContext mContext;
 
-    public MobilePayNatvieModule(ReactApplicationContext reactContext) {
+    public MobilePayNativeModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.mContext = reactContext;
     }
