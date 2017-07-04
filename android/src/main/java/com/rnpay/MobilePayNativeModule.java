@@ -13,11 +13,12 @@ import android.text.TextUtils;
 import android.annotation.SuppressLint;
 import android.widget.Toast;
 import java.util.Map;
+import android.content.Context;
 import com.facebook.react.bridge.Arguments;
 public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     private static final int    ALI_PAY_FLAG = 0x10;
     public static final  String NAME         = "MobilePayNativeModule";
-    private ReactApplicationContext mContext;
+    private Context mContext;
 
     public MobilePayNativeModule(ReactApplicationContext reactContext) {
         super(reactContext);
