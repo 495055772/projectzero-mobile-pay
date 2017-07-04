@@ -18,7 +18,7 @@ public class MobilePayNatvieModule extends ReactContextBaseJavaModule {
     public static final  String NAME         = "MobilePayNatvieModule";
     private ReactContext mContext;
 
-    public AlipayNatvieModule(ReactApplicationContext reactContext) {
+    public MobilePayNatvieModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.mContext = reactContext;
     }
