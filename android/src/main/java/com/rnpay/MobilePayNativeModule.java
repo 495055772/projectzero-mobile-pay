@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.Map;
 import android.content.Context;
 import com.facebook.react.bridge.Arguments;
+import Android.app.Activity;
 public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     private static final int    ALI_PAY_FLAG = 0x10;
     public static final  String NAME         = "MobilePayNativeModule";
@@ -30,7 +31,7 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
         Runnable payRunnable = new Runnable() {
             @Override
             public void run() {
-                PayTask alipay = new PayTask(mContext);
+                PayTask alipay = new PayTask((Activity)mContext);
                 Map<String, String> payResult = alipay.payV2(orderInfo, true);
                 Log.i("dale", payResult.toString());
                 String version = payTask.getVersion();
