@@ -58,9 +58,9 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
                 String resultStatus = payResult.getResultStatus();
                 // 判断resultStatus 为9000则代表支付成功
                 WritableMap params = Arguments.createMap();
-                params.put("resultStatus", resultStatus);
-                params.put("resultInfo", resultInfo);
-                params.put("payType", "alipay");//支付类型
+                params.putString("resultStatus", resultStatus);
+                params.putString("resultInfo", resultInfo);
+                params.putString("payType", "alipay");//支付类型
                 sendEvent(params);
                 break;
             default:
