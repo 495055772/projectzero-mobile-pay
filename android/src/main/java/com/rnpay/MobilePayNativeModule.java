@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.annotation.SuppressLint;
 import android.widget.Toast;
 import java.util.Map;
+import com.facebook.react.bridge.Arguments;
 public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     private static final int    ALI_PAY_FLAG = 0x10;
     public static final  String NAME         = "MobilePayNativeModule";
@@ -54,7 +55,7 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
                 String resultInfo = payResult.getResult();// 同步返回需要验证的信息
                 String resultStatus = payResult.getResultStatus();
                 // 判断resultStatus 为9000则代表支付成功
-                WritableMap params = new WritableMap();
+                WritableMap params = Arguments.createMap();
                 params.put("resultStatus", resultStatus);
                 params.put("resultInfo", resultInfo);
                 params.put("payType", "alipay");//支付类型
