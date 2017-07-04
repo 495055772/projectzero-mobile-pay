@@ -16,6 +16,7 @@ import java.util.Map;
 import android.content.Context;
 import com.facebook.react.bridge.Arguments;
 import android.app.Activity;
+import com.facebook.react.bridge.ReactMethod;
 public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     private static final int    ALI_PAY_FLAG = 0x10;
     public static final  String NAME         = "MobilePayNativeModule";
