@@ -1,7 +1,7 @@
 import {
     NativeModules
 } from 'react-native';
-const MobilePay = NativeModules.MobilePayNativeModule;
+const MobilePayClient = NativeModules.MobilePayNativeModule;
 /**
  * 移动rn支付入口
  */
@@ -11,7 +11,7 @@ export default class MobilePay {
      * @param orderInfo 订单信息
      */
     static startAlipay(orderInfo) {
-        MobilePay.startAlipay(orderInfo);
+        MobilePayClient.startAlipay(orderInfo);
     }
 
 }

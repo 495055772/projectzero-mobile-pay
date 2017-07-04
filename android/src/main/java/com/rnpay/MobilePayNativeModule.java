@@ -10,15 +10,19 @@ import com.facebook.react.modules.core.RCTNativeAppEventEmitter;
 import android.text.TextUtils;
 import android.annotation.SuppressLint;
 import android.widget.Toast;
+
 import java.util.Map;
+
 import android.content.Context;
 import com.facebook.react.bridge.Arguments;
 import android.app.Activity;
 import com.facebook.react.bridge.ReactMethod;
+
 public class MobilePayNativeModule extends ReactContextBaseJavaModule {
-    public static final  String NAME         = "MobilePayNativeModule";
-    private Context mContext;
-    private  ReactApplicationContext reactContext;
+    public static final String NAME = "MobilePayNativeModule";
+    private Context                 mContext;
+    private ReactApplicationContext reactContext;
+
     public MobilePayNativeModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.mContext = reactContext;
@@ -28,7 +32,8 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     @ReactMethod
     @SuppressWarnings("unused")
     public void startAlipay(final String orderInfo) {
-        PayTask alipay = new PayTask((Activity)mContext);
+        Activity currentActivity = getCurrentActivity();
+        PayTask alipay = new PayTask(currentActivity);
         Map<String, String> payResult = alipay.payV2(orderInfo, true);
         Log.i("dale", payResult.toString());
         String version = alipay.getVersion();
