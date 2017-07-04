@@ -30,7 +30,7 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     @SuppressWarnings("unused")
-    public void startAlipay(String orderInfo) {
+    public void startAlipay(final String orderInfo) {
         Runnable payRunnable = new Runnable() {
             @Override
             public void run() {
