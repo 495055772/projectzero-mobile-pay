@@ -20,10 +20,11 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
     private static final int    ALI_PAY_FLAG = 0x10;
     public static final  String NAME         = "MobilePayNativeModule";
     private Context mContext;
-
+    private  ReactApplicationContext reactContext;
     public MobilePayNativeModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.mContext = reactContext;
+        this.reactContext = reactContext;
     }
 
     @ReactMethod
@@ -80,7 +81,7 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
      * @param params
      */
     public void sendEvent(WritableMap params) {
-        mContext.getJSModule(RCTNativeAppEventEmitter.class)
+        reactContext.getJSModule(RCTNativeAppEventEmitter.class)
                 .emit("payResult", params);
     }
 
