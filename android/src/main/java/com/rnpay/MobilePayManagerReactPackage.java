@@ -9,7 +9,7 @@ import com.facebook.react.uimanager.ViewManager;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import java.util.Arrays;
 import android.app.Activity;
 
 public class MobilePayManagerReactPackage implements ReactPackage {
@@ -31,6 +31,6 @@ public class MobilePayManagerReactPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        return return Arrays.asList();;
+        return Arrays.asList();;
     }
 }
