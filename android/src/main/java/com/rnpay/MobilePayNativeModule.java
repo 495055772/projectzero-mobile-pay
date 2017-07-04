@@ -42,11 +42,13 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
          */
         String resultInfo = backResult.getResult();// 同步返回需要验证的信息
         String resultStatus = backResult.getResultStatus();
+        String msg = backResult.getMemo();
         // 判断resultStatus 为9000则代表支付成功
         WritableMap params = Arguments.createMap();
         params.putString("resultStatus", resultStatus);
         params.putString("resultInfo", resultInfo);
         params.putString("payType", "alipay");//支付类型
+        params.putString("memo", msg);//支付类型
         sendEvent(params);
     }
 
