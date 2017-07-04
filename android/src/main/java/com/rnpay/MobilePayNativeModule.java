@@ -34,7 +34,7 @@ public class MobilePayNativeModule extends ReactContextBaseJavaModule {
                 PayTask alipay = new PayTask((Activity)mContext);
                 Map<String, String> payResult = alipay.payV2(orderInfo, true);
                 Log.i("dale", payResult.toString());
-                String version = payTask.getVersion();
+                String version = alipay.getVersion();
                 Log.i("dale", "支付task version-->" + version);
                 Message msg = new Message();
                 msg.what = ALI_PAY_FLAG;
