@@ -13,14 +13,14 @@ import java.util.List;
 import android.app.Activity;
 
 public class MobilePayManagerReactPackage implements ReactPackage {
-    public MobilePayNatvieModule mobilePayNatvieModule;
+    public MobilePayNativeModule mobilePayNativeModule;
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<NativeModule>();
-        mobilePayNatvieModule = new MobilePayNatvieModule(reactContext);
+        mobilePayNativeModule = new MobilePayNativeModule(reactContext);
         //初始化modules
-        modules.add(mobilePayNatvieModule);
+        modules.add(mobilePayNativeModule);
         return modules;
     }
 
