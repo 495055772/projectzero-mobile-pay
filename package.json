@@ -2,6 +2,6 @@
  
   "license": "ISC",
   "main": "index.js",
-  "name": "projectzero-mobile-pay",
+  "name": "projectzero-rn-alipay",
   "version": "1.0.0"
 }

@@ -1,4 +1,4 @@
-package com.rnpay;
+package com.rnalipay;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Arrays;
 import android.app.Activity;
 
-public class MobilePayManagerReactPackage implements ReactPackage {
+public class AliPayManagerReactPackage implements ReactPackage {
     public MobilePayNativeModule mobilePayNativeModule;
 
     @Override

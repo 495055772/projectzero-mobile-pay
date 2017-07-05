@@ -1,4 +1,4 @@
-package com.rnpay;
+package com.rnalipay;
 
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -18,11 +18,11 @@ import com.facebook.react.bridge.Arguments;
 import android.app.Activity;
 import com.facebook.react.bridge.ReactMethod;
 
-public class MobilePayNativeModule extends ReactContextBaseJavaModule {
-    public static final String NAME = "MobilePayNativeModule";
+public class AliPayNativeModule extends ReactContextBaseJavaModule {
+    public static final String NAME = "AliPayNativeModule";
     private ReactApplicationContext reactContext;
 
-    public MobilePayNativeModule(ReactApplicationContext reactContext) {
+    public AliPayNativeModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
     }
